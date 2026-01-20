@@ -38,9 +38,8 @@ def validate_args(validator: Callable[..., bool]) -> Callable[[F], F]:
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             if not validator(*args, **kwargs):
-                raise ValidationError(
-                    f"Validation failed for arguments: args={args}, kwargs={kwargs}"
-                )
+                msg = f"Validation failed for arguments: args={args}, kwargs={kwargs}"
+                raise ValidationError(msg)
             return func(*args, **kwargs)
 
         return wrapper  # type: ignore[return-value]
