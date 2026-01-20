@@ -1,6 +1,6 @@
 # ValidX
 
-[![CI](https://github.com/yourusername/validx/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/validx/actions/workflows/ci.yml)
+[![CI](https://github.com/2024si96524-Mithun/ValidX/actions/workflows/ci.yml/badge.svg)](https://github.com/2024si96524-Mithun/ValidX/actions/workflows/ci.yml)
 [![PyPI version](https://badge.fury.io/py/validx.svg)](https://badge.fury.io/py/validx)
 [![Python Versions](https://img.shields.io/pypi/pyversions/validx.svg)](https://pypi.org/project/validx/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -114,8 +114,8 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/validx.git
-cd validx
+git clone https://github.com/2024si96524-Mithun/ValidX.git
+cd ValidX
 
 # Install development dependencies
 pip install -e .[dev]

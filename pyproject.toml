@@ -38,10 +38,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/validx"
-Documentation = "https://github.com/yourusername/validx#readme"
-Repository = "https://github.com/yourusername/validx"
-"Bug Tracker" = "https://github.com/yourusername/validx/issues"
+Homepage = "https://github.com/2024si96524-Mithun/ValidX"
+Documentation = "https://github.com/2024si96524-Mithun/ValidX#readme"
+Repository = "https://github.com/2024si96524-Mithun/ValidX"
+"Bug Tracker" = "https://github.com/2024si96524-Mithun/ValidX/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
