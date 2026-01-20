@@ -75,9 +75,7 @@ def validate_return(validator: Callable[[Any], bool]) -> Callable[[F], F]:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             result = func(*args, **kwargs)
             if not validator(result):
-                raise ValidationError(
-                    f"Validation failed for return value: {result}"
-                )
+                raise ValidationError(f"Validation failed for return value: {result}")
             return result
 
         return wrapper  # type: ignore[return-value]

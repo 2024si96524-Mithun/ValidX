@@ -4,9 +4,7 @@ import re
 from typing import Any, Optional, Union
 
 # Precompiled regex patterns for better performance
-EMAIL_PATTERN = re.compile(
-    r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-)
+EMAIL_PATTERN = re.compile(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 URL_PATTERN = re.compile(
     r"^https?://"
     r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?|"
