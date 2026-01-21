@@ -1,8 +1,8 @@
 # ValidX
 
 [![CI](https://github.com/2024si96524-Mithun/ValidX/actions/workflows/ci.yml/badge.svg)](https://github.com/2024si96524-Mithun/ValidX/actions/workflows/ci.yml)
-[![PyPI version](https://badge.fury.io/py/validx.svg)](https://badge.fury.io/py/validx)
-[![Python Versions](https://img.shields.io/pypi/pyversions/validx.svg)](https://pypi.org/project/validx/)
+[![PyPI version](https://badge.fury.io/py/validify-py.svg)](https://badge.fury.io/py/validify-py)
+[![Python Versions](https://img.shields.io/pypi/pyversions/validify-py.svg)](https://pypi.org/project/validify-py/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -21,13 +21,13 @@ A flexible and extensible validation library for Python.
 ## Installation
 
 ```bash
-pip install validx
+pip install validify-py
 ```
 
 For development:
 
 ```bash
-pip install validx[dev]
+pip install validify-py[dev]
 ```
 
 ## Quick Start

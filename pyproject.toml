@@ -1,16 +1,15 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=61.0,<75.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "validx"
+name = "validify-py"
 version = "0.1.0"
 description = "A flexible and extensible validation library for Python"
 readme = "README.md"
 authors = [
     {name = "ValidX Contributors"}
 ]
-license = {text = "MIT"}
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
