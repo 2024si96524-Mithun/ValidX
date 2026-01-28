@@ -23,6 +23,7 @@ from validx.validators import (
     is_integer,
     is_list,
     is_none,
+    is_phone,
     is_string,
     is_url,
 )
@@ -38,6 +39,7 @@ __all__ = [
     "is_float",
     "is_email",
     "is_url",
+    "is_phone",
     "is_boolean",
     "is_list",
     "is_dict",
