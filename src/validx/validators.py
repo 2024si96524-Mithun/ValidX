@@ -14,6 +14,9 @@ URL_PATTERN = re.compile(
     r"(?:/?|[/?]\S+)$",
     re.IGNORECASE,
 )
+PHONE_PATTERN = re.compile(
+    r"^\+?[\d\s\-\(\)]{9,20}$"
+)
 
 
 def is_string(value: Any) -> bool:
@@ -126,6 +129,42 @@ def is_url(value: Any) -> bool:
     if not isinstance(value, str):
         return False
     return bool(URL_PATTERN.match(value))
+
+
+def is_phone(value: Any) -> bool:
+    """Check if value is a valid phone number.
+
+    Supports international phone numbers with:
+    - Optional + prefix for country code
+    - 9-15 digits (aligns with ITU-T E.164 standard)
+    - Common separators: spaces, hyphens, parentheses
+    - Examples: +1 (555) 123-4567, +44 20 7946 0958, 555-123-4567
+
+    Args:
+        value: The value to check.
+
+    Returns:
+        True if value is a valid phone number format, False otherwise.
+    """
+    if not isinstance(value, str):
+        return False
+    
+    # Remove common separators to count digits
+    digits_only = re.sub(r'[\s\-\(\)]', '', value)
+    # Remove optional + prefix
+    if digits_only.startswith('+'):
+        digits_only = digits_only[1:]
+    
+    # Check if it contains only digits and has valid length (9-15 digits)
+    if not digits_only.isdigit():
+        return False
+    
+    digit_count = len(digits_only)
+    if digit_count < 9 or digit_count > 15:
+        return False
+    
+    # Validate format with precompiled pattern
+    return bool(PHONE_PATTERN.match(value))
 
 
 def is_in_range(

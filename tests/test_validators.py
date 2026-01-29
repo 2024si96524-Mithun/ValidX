@@ -187,3 +187,60 @@ class TestHasMaxLength:
     def test_returns_false_for_non_sequence(self) -> None:
         assert validators.has_max_length(123, 3) is False
         assert validators.has_max_length(None, 1) is False
+
+
+class TestIsPhone:
+    """Tests for is_phone validator."""
+
+    def test_returns_true_for_valid_us_phone_formats(self) -> None:
+        """Test various valid US phone number formats."""
+        assert validators.is_phone("555-123-4567") is True
+        assert validators.is_phone("(555) 123-4567") is True
+        assert validators.is_phone("+1 (555) 123-4567") is True
+        assert validators.is_phone("+1-555-123-4567") is True
+        assert validators.is_phone("5551234567") is True
+
+    def test_returns_true_for_valid_international_formats(self) -> None:
+        """Test various valid international phone number formats."""
+        assert validators.is_phone("+44 20 7946 0958") is True
+        assert validators.is_phone("+33 1 42 86 82 00") is True
+        assert validators.is_phone("+86 10 1234 5678") is True
+        assert validators.is_phone("+91 98765 43210") is True
+        assert validators.is_phone("+61 2 1234 5678") is True
+
+    def test_returns_true_for_edge_cases(self) -> None:
+        """Test edge cases with minimum and maximum digit counts."""
+        assert validators.is_phone("123456789") is True  # 9 digits (minimum)
+        assert validators.is_phone("+123456789012345") is True  # 15 digits (maximum)
+        assert validators.is_phone("+1 234 567 890 12345") is True  # 15 with spaces
+
+    def test_returns_false_for_too_short_numbers(self) -> None:
+        """Test phone numbers with fewer than 9 digits."""
+        assert validators.is_phone("12345678") is False  # 8 digits
+        assert validators.is_phone("123-4567") is False
+        assert validators.is_phone("+1 234567") is False
+
+    def test_returns_false_for_too_long_numbers(self) -> None:
+        """Test phone numbers with more than 15 digits."""
+        assert validators.is_phone("1234567890123456") is False  # 16 digits
+        assert validators.is_phone("+1 234 567 890 123456") is False
+
+    def test_returns_false_for_invalid_characters(self) -> None:
+        """Test phone numbers with invalid characters."""
+        assert validators.is_phone("555-ABC-1234") is False
+        assert validators.is_phone("phone: 5551234567") is False
+        assert validators.is_phone("555.123.4567") is False  # dots not supported
+        assert validators.is_phone("555*123*4567") is False
+
+    def test_returns_false_for_non_string_types(self) -> None:
+        """Test that non-string types return False."""
+        assert validators.is_phone(5551234567) is False
+        assert validators.is_phone(None) is False
+        assert validators.is_phone([]) is False
+        assert validators.is_phone({}) is False
+
+    def test_returns_false_for_empty_or_whitespace(self) -> None:
+        """Test empty strings and whitespace-only strings."""
+        assert validators.is_phone("") is False
+        assert validators.is_phone("   ") is False
+        assert validators.is_phone("---") is False

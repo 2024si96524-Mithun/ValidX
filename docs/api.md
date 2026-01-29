@@ -6,6 +6,7 @@
 - `is_float(value)`
 - `is_email(value)`
 - `is_url(value)`
+- `is_phone(value)`
 
 ## validx.decorators
 - `validate_args(validator)`

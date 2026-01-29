@@ -11,7 +11,7 @@ A flexible and extensible validation library for Python.
 ## Features
 
 - 🔍 **Type Validators**: Check for strings, integers, floats, booleans, lists, dicts, and None
-- 📧 **Format Validators**: Validate emails and URLs with robust regex patterns
+- 📧 **Format Validators**: Validate emails, URLs, and phone numbers with robust regex patterns
 - 📏 **Range & Length Validators**: Check numeric ranges and string/collection lengths
 - 🎯 **Decorators**: Validate function arguments and return values
 - 🛠️ **Utilities**: Helper functions for empty/non-empty checks
@@ -33,7 +33,7 @@ pip install validify-py[dev]
 ## Quick Start
 
 ```python
-from validx import is_email, is_url, is_string, is_in_range, ValidationError
+from validx import is_email, is_url, is_phone, is_string, is_in_range, ValidationError
 
 # Basic type validation
 is_string("hello")  # True
@@ -47,6 +47,12 @@ is_email("invalid-email")     # False
 is_url("https://github.com")  # True
 is_url("not-a-url")           # False
 
+# Phone number validation
+is_phone("+1 (555) 123-4567")  # True
+is_phone("+44 20 7946 0958")   # True
+is_phone("555-1234")           # True
+is_phone("invalid")            # False
+
 # Range validation
 is_in_range(5, min_value=0, max_value=10)  # True
 is_in_range(15, min_value=0, max_value=10) # False
@@ -55,7 +61,7 @@ is_in_range(15, min_value=0, max_value=10) # False
 ## Using Decorators
 
 ```python
-from validx import validate_args, validate_return, ValidationError
+from validx import validate_args, validate_return, validate_phone, ValidationError
 
 def is_positive(x):
     return x > 0
@@ -66,6 +72,15 @@ def square(x):
 
 square(5)   # Returns 25
 square(-1)  # Raises ValidationError
+
+# Phone validation decorator
+@validate_phone
+def send_sms(phone_number):
+    # ... send SMS logic
+    print(f"Sending SMS to {phone_number}")
+
+send_sms("+1-555-123-4567")  # Works
+send_sms("invalid")          # Raises ValidationError
 
 def is_not_none(value):
     return value is not None
@@ -92,6 +107,7 @@ find_user(999)  # Raises ValidationError if returns None
 | `is_none(value)` | Check if value is None |
 | `is_email(value)` | Check if value is a valid email format |
 | `is_url(value)` | Check if value is a valid URL format |
+| `is_phone(value)` | Check if value is a valid phone number format |
 | `is_in_range(value, min_value, max_value)` | Check if numeric value is in range |
 | `has_min_length(value, min_length)` | Check minimum length |
 | `has_max_length(value, max_length)` | Check maximum length |
