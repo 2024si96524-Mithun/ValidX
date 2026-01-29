@@ -148,9 +148,9 @@ def is_phone(value: Any) -> bool:
         return False
 
     # Remove common separators to count digits
-    digits_only = re.sub(r'[\s\-\(\)]', '', value)
+    digits_only = re.sub(r"[\s\-\(\)]", "", value)
     # Remove optional + prefix
-    if digits_only.startswith('+'):
+    if digits_only.startswith("+"):
         digits_only = digits_only[1:]
 
     # Check if it contains only digits and has valid length (9-15 digits)
