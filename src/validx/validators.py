@@ -14,9 +14,7 @@ URL_PATTERN = re.compile(
     r"(?:/?|[/?]\S+)$",
     re.IGNORECASE,
 )
-PHONE_PATTERN = re.compile(
-    r"^\+?[\d\s\-\(\)]{9,20}$"
-)
+PHONE_PATTERN = re.compile(r"^\+?[\d\s\-\(\)]{9,20}$")
 
 
 def is_string(value: Any) -> bool:
